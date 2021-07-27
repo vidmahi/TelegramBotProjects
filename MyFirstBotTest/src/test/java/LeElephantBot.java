@@ -74,6 +74,8 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -259,6 +261,7 @@ public class LeElephantBot extends TelegramLongPollingBot {
                 }
             }
 
+
           /*  if(update.getMessage().getText().equals("I am ok with answering a question about my favorite color"))
             {
                // message.setText("Thank you! Please enter your favorite color in the format 'My favorite color is (color)'");
@@ -403,6 +406,27 @@ public class LeElephantBot extends TelegramLongPollingBot {
                 collection.updateOne(Filters.eq("id", cId), Updates.set("color", cDb));
             }
 
+
+            if(update.getMessage().getText().equals("/translate"))
+            {
+                message.setText("Please type in 'Translate (something)' to see a translation of your chosen word or phrase in different languages. And example is 'Translate Hello World'");
+            }
+
+            if(update.getMessage().getText().contains("Translate"))
+            {
+                String trans = update.getMessage().getText().substring(10);
+                Translate t = new Translate();
+                try {
+                    String finalt = t.Post(trans);
+                    System.out.println("finalt" + finalt);
+                    //System.out.println(finalt.substring(finalt.indexOf("text"+5),finalt.indexOf(",")));
+                    message.setText(finalt.substring((finalt.indexOf("text"))+7,finalt.indexOf(",")-1));
+                    //message.setText(finalt.substring(26,finalt.indexOf(",")));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
 
 
           /*  if(update.getMessage().getText().equals("/food"))
