@@ -19,6 +19,8 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
 import java.time.LocalDate;
+import java.util.Locale;
+
 import org.bson.Document;
 
 
@@ -159,7 +161,7 @@ public class LeElephantBot extends TelegramLongPollingBot {
 
             //******* Checking if user exists Start ********
 
-        if(update.getMessage().getText().equals("Hello"))
+        if(update.getMessage().getText().equalsIgnoreCase("Hello"))
         {
 
             long found1 = collection.count(Document.parse("{id : " + Integer.toString(chatTest) + "}"));
@@ -319,9 +321,9 @@ public class LeElephantBot extends TelegramLongPollingBot {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            String answerSubstringTest = data.substring((data.indexOf("answer"))+10,data.indexOf("round")-4);
+            String answerSubstringTest = data.substring((data.indexOf("answer"))+10,data.indexOf("round")-4).toLowerCase();
             System.out.println(answerSubstringTest);
-            if(update.getMessage().getText().equals(answerSubstringTest))
+            if((update.getMessage().getText()).toLowerCase().equals(answerSubstringTest))
             {
                 System.out.println("Comparision check");
                 message.setText("Correct!");
