@@ -22,7 +22,7 @@ public class LeElephantPhotoBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "1819302745:AAGPjv3hYBXYJRZkc3-6YjUv6M_fQtemeQo";
+        return "000000000:0000000000";
     }
 
     @Override
