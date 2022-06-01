@@ -11,7 +11,7 @@ public class test {
         public static void main (String[] args){
             try {
 
-                Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.1.247/austin_atagallu", "root", "t1tan1um");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://xxx.xxx.xxx.xxx/austin_atagallu", "xxx", "xxxxx");
 
                 Statement statement = connection.createStatement();
 
